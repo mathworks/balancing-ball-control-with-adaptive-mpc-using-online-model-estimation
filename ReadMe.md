@@ -6,7 +6,7 @@
 
 
 
-モデルをダウンロード、もしくはクローンした後、最初に「Battery_modeling_in_simscape.prj」をダブルクリックして[プロジェクト](https://jp.mathworks.com/help/matlab/projects.html)を起動すること。
+モデルをダウンロード、もしくはクローンした後、最初に「rls_mpc_ball_control.prj」をダブルクリックして[プロジェクト](https://jp.mathworks.com/help/matlab/projects.html)を起動すること。
 
 
 # 必要なツールボックス
