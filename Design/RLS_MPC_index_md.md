@@ -24,7 +24,6 @@
    -  Model Predictive Control Toolbox™ 
    -  System Identification Toolbox™ 
    -  Simscape™, Simscape Multibody™ 
-   -  MATLAB® Coder™, Simulink® Coder™, Embedded Coder® 
 
 # 概要
 
