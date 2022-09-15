@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Info Location="environment.loadSimulink"><Info Value="true"/></Info>
+<Command Location="environment.loadSimulink"><Info Value="true"/></Command>
