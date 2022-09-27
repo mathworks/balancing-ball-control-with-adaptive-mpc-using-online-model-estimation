@@ -69,7 +69,7 @@
 
 
 
-[むだ時間を含むシステムに対して適応MPCを設計](/design_MPC_with_delay.mlx)
+[むだ時間を含むシステムに対して適応MPCを設計](/Design/design_MPC_with_delay.mlx)
 
 
   
