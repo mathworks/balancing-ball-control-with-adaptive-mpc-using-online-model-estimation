@@ -49,27 +49,27 @@
 # 目次
 
 
-[PID制御器によるボールの位置制御](/Design/explain_ball_control_with_PID.mlx)
+[PID制御器によるボールの位置制御](/Design/explain_ball_control_with_PID_md.md)
 
 
 
 
-[周波数応答推定器によるプラントモデルの推定](/Design/run_FRE_and_analyze_frd_data.mlx)
+[周波数応答推定器によるプラントモデルの推定](/Design/run_FRE_and_analyze_frd_data_md.md)
 
 
 
 
-[オンラインモデル推定適応MPCを設計](/Design/design_RLS_MPC_controller.mlx)
+[オンラインモデル推定適応MPCを設計](/Design/design_RLS_MPC_controller_md.md)
 
 
 
 
-[適応MPCによる軌道追従制御](/Design/design_trajectory_control_MPC.mlx)
+[適応MPCによる軌道追従制御](/Design/design_trajectory_control_MPC_md.md)
 
 
 
 
-[むだ時間を含むシステムに対して適応MPCを設計](/Design/design_MPC_with_delay.mlx)
+[むだ時間を含むシステムに対して適応MPCを設計](/Design/design_MPC_with_delay_md.md)
 
 
   
