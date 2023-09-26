@@ -2,9 +2,7 @@
 *.mat binary
 *.mdl binary diff merge=mlAutoMerge
 *.mdlp binary
-*.mexa64 binary
-*.mexw64 binary
-*.mexmaci64 binary
+*.mex* binary
 *.mlapp binary
 *.mldatx binary
 *.mlproj binary
