@@ -1,5 +1,5 @@
 
-# <span style="color:rgb(213,80,0)">適応MPCによる軌道追従制御</span>
+# 適応MPCによる軌道追従制御
 # 初期化
 ```matlab
 system_model_name = 'BallAndPlate_system';
@@ -53,7 +53,7 @@ set_slddVal('BallAndPlate_system_data.sldd', 'offset_free_I_gain', 0.01);
 sim(system_model_name);
 ```
 
-```TextOutput
+```matlabTextOutput
    測定出力チャネル #1 に外乱が追加されていないと仮定します。
    測定出力チャネル #2 に外乱が追加されていないと仮定します。
 -->"Model.Noise" プロパティが空です。それぞれの測定出力にホワイト ノイズを仮定します。

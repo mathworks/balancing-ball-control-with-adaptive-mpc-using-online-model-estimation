@@ -1,5 +1,5 @@
 
-# <span style="color:rgb(213,80,0)">むだ時間を含むシステムに対して適応MPCを設計</span>
+# むだ時間を含むシステムに対して適応MPCを設計
 # 初期化
 ```matlab
 system_model_name = 'BallAndPlate_system';
@@ -60,8 +60,7 @@ semilogx(x, frd_results(:, 2), 'o');
 title('位相[deg]');
 ```
 
-<center><img src="design_MPC_with_delay_md_media/figure_0.png" width="562" alt="figure_0.png"></center>
-
+![figure_0.png](design_MPC_with_delay_md_media/figure_0.png)
 
 ```matlab
 figure;
@@ -113,8 +112,7 @@ end
 plot(fit_vec);
 ```
 
-<center><img src="design_MPC_with_delay_md_media/figure_1.png" width="562" alt="figure_1.png"></center>
-
+![figure_1.png](design_MPC_with_delay_md_media/figure_1.png)
 
 ```matlab
 figure;
@@ -129,7 +127,7 @@ plot_option.PhaseWrapping = 'on';
 better_model_1 = estimated_model{6}
 ```
 
-```TextOutput
+```matlabTextOutput
 better_model_1 =
  
                 18.83 s^2 - 110.2 s + 1.587e04
@@ -137,10 +135,12 @@ better_model_1 =
                    s^3 + 350.4 s^2 + 8623 s
  
 同定された連続時間伝達関数です。
+
 パラメーター化:
    極の数: 3   零点の数: 2
    自由係数の数: 6
    パラメーターとその不確かさについては、"tfdata"、"getpvec"、"getcov" を使用してください。
+
 状態:                                          
 周波数応答データ "frd_data_set" に TFEST を使用して推定されました。
 推定データへの適合: 73.96%                            
@@ -152,14 +152,13 @@ bode(frd_data_set, better_model_1, frd_x, plot_option);
 legend('元のデータ', '同定された伝達関数');
 ```
 
-<center><img src="design_MPC_with_delay_md_media/figure_2.png" width="562" alt="figure_2.png"></center>
-
+![figure_2.png](design_MPC_with_delay_md_media/figure_2.png)
 
 ```matlab
 better_model_2 = estimated_model{10}
 ```
 
-```TextOutput
+```matlabTextOutput
 better_model_2 =
  
                 -14.35 s^3 + 1.386e04 s^2 - 7.75e04 s + 1.182e07
@@ -167,10 +166,12 @@ better_model_2 =
                   s^4 + 457.9 s^3 + 2.995e05 s^2 + 6.349e06 s
  
 同定された連続時間伝達関数です。
+
 パラメーター化:
    極の数: 4   零点の数: 3
    自由係数の数: 8
    パラメーターとその不確かさについては、"tfdata"、"getpvec"、"getcov" を使用してください。
+
 状態:                                          
 周波数応答データ "frd_data_set" に TFEST を使用して推定されました。
 推定データへの適合: 87.01%                            
@@ -182,14 +183,13 @@ bode(frd_data_set, better_model_2, frd_x, plot_option);
 legend('元のデータ', '同定された伝達関数');
 ```
 
-<center><img src="design_MPC_with_delay_md_media/figure_3.png" width="562" alt="figure_3.png"></center>
-
+![figure_3.png](design_MPC_with_delay_md_media/figure_3.png)
 
 ```matlab
 best_fit_model = estimated_model{max_fit_index}
 ```
 
-```TextOutput
+```matlabTextOutput
 best_fit_model =
  
                 -35.57 s^4 + 2.256e04 s^3 + 7.784e05 s^2 + 2.715e07 s + 9.024e08
@@ -197,10 +197,12 @@ best_fit_model =
                     s^5 + 930.2 s^4 + 4.39e05 s^3 + 4.372e07 s^2 + 4.48e08 s
  
 同定された連続時間伝達関数です。
+
 パラメーター化:
    極の数: 5   零点の数: 4
    自由係数の数: 10
    パラメーターとその不確かさについては、"tfdata"、"getpvec"、"getcov" を使用してください。
+
 状態:                                          
 周波数応答データ "frd_data_set" に TFEST を使用して推定されました。
 推定データへの適合: 94.56%                            
@@ -212,8 +214,7 @@ bode(frd_data_set, best_fit_model, frd_x, plot_option);
 legend('元のデータ', '同定された伝達関数');
 ```
 
-<center><img src="design_MPC_with_delay_md_media/figure_4.png" width="562" alt="figure_4.png"></center>
-
+![figure_4.png](design_MPC_with_delay_md_media/figure_4.png)
 
 最も次数の低いモデルを選択し、(1/s)とむだ時間を追加し、伝達関数を完成させる。
 
@@ -222,7 +223,7 @@ estimated_BallAndPlate_transfer_function = tf(better_model_1.Numerator, ...
     [better_model_1.Denominator, 0], 'InputDelay', delay_time)
 ```
 
-```TextOutput
+```matlabTextOutput
 estimated_BallAndPlate_transfer_function =
  
                 18.83 s^2 - 110.2 s + 1.587e04
@@ -242,7 +243,7 @@ BallAndPlate_1aixs_tf_d = c2d(estimated_BallAndPlate_transfer_function, Ts);
 BallAndPlate_1aixs_tf_dd = absorbDelay(BallAndPlate_1aixs_tf_d)
 ```
 
-```TextOutput
+```matlabTextOutput
 BallAndPlate_1aixs_tf_dd =
  
       0.0007822 z^3 - 0.001283 z^2 + 0.0006886 z + 0.000116
@@ -257,7 +258,7 @@ BallAndPlate_1aixs_tf_dd =
 BallAndPlate_ss_d = ss([BallAndPlate_1aixs_tf_dd, 0; 0, BallAndPlate_1aixs_tf_dd])
 ```
 
-```TextOutput
+```matlabTextOutput
 BallAndPlate_ss_d =
  
   A = 
@@ -446,7 +447,7 @@ MPCオブジェクトを作成する。
 mpcObj = mpc(BallAndPlate_ss_d, Ts);
 ```
 
-```TextOutput
+```matlabTextOutput
 -->"PredictionHorizon" プロパティが空です。既定の 10 を仮定します。
 -->"ControlHorizon" プロパティが空です。既定の 2 を仮定します。
 -->"Weights.ManipulatedVariables" プロパティが空です。既定の 0.00000 を仮定します。
@@ -485,7 +486,7 @@ open_system(system_model_name);
 sim(system_model_name);
 ```
 
-```TextOutput
+```matlabTextOutput
    測定出力チャネル #1 に外乱が追加されていないと仮定します。
    測定出力チャネル #2 に外乱が追加されていないと仮定します。
 -->"Model.Noise" プロパティが空です。それぞれの測定出力にホワイト ノイズを仮定します。

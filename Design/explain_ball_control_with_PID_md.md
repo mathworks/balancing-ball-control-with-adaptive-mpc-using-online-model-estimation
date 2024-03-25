@@ -1,5 +1,5 @@
 
-# <span style="color:rgb(213,80,0)">PID制御器によるボールの位置制御</span>
+# PID制御器によるボールの位置制御
 # 初期化
 ```matlab
 system_model_name = 'BallAndPlate_system';

@@ -1,5 +1,5 @@
 
-# <span style="color:rgb(213,80,0)">周波数応答推定器によるプラントモデルの推定</span>
+# 周波数応答推定器によるプラントモデルの推定
 # 初期化
 ```matlab
 system_model_name = 'BallAndPlate_system';
@@ -60,8 +60,7 @@ semilogx(x, frd_results(:, 2), 'o');
 title('位相[deg]');
 ```
 
-<center><img src="run_FRE_and_analyze_frd_data_md_media/figure_0.png" width="562" alt="figure_0.png"></center>
-
+![figure_0.png](run_FRE_and_analyze_frd_data_md_media/figure_0.png)
 
 ```matlab
 figure;
@@ -119,15 +118,13 @@ end
 plot(fit_vec);
 ```
 
-<center><img src="run_FRE_and_analyze_frd_data_md_media/figure_1.png" width="562" alt="figure_1.png"></center>
-
+![figure_1.png](run_FRE_and_analyze_frd_data_md_media/figure_1.png)
 
 ```matlab
 plot(AIC_vec);
 ```
 
-<center><img src="run_FRE_and_analyze_frd_data_md_media/figure_2.png" width="562" alt="figure_2.png"></center>
-
+![figure_2.png](run_FRE_and_analyze_frd_data_md_media/figure_2.png)
 
 ```matlab
 figure;
@@ -142,7 +139,7 @@ plot_option.PhaseWrapping = 'on';
 better_model_1 = estimated_model{6}
 ```
 
-```TextOutput
+```matlabTextOutput
 better_model_1 =
  
   19.64 s^2 - 58.89 s + 1.614e04
@@ -150,10 +147,12 @@ better_model_1 =
      s^3 + 357.7 s^2 + 8185 s
  
 同定された連続時間伝達関数です。
+
 パラメーター化:
    極の数: 3   零点の数: 2
    自由係数の数: 6
    パラメーターとその不確かさについては、"tfdata"、"getpvec"、"getcov" を使用してください。
+
 状態:                                          
 周波数応答データ "frd_data_set" に TFEST を使用して推定されました。
 推定データへの適合: 73.09%                            
@@ -165,15 +164,14 @@ bode(frd_data_set, better_model_1, frd_x, plot_option);
 legend('元のデータ', '同定された伝達関数');
 ```
 
-<center><img src="run_FRE_and_analyze_frd_data_md_media/figure_3.png" width="562" alt="figure_3.png"></center>
-
+![figure_3.png](run_FRE_and_analyze_frd_data_md_media/figure_3.png)
 
 ```matlab
 
 better_model_2 = estimated_model{10}
 ```
 
-```TextOutput
+```matlabTextOutput
 better_model_2 =
  
   -11.29 s^3 + 1.316e04 s^2 - 2.793e04 s + 1.075e07
@@ -181,10 +179,12 @@ better_model_2 =
       s^4 + 426 s^3 + 2.803e05 s^2 + 5.36e06 s
  
 同定された連続時間伝達関数です。
+
 パラメーター化:
    極の数: 4   零点の数: 3
    自由係数の数: 8
    パラメーターとその不確かさについては、"tfdata"、"getpvec"、"getcov" を使用してください。
+
 状態:                                          
 周波数応答データ "frd_data_set" に TFEST を使用して推定されました。
 推定データへの適合: 86.7%                             
@@ -196,15 +196,14 @@ bode(frd_data_set, better_model_2, frd_x, plot_option);
 legend('元のデータ', '同定された伝達関数');
 ```
 
-<center><img src="run_FRE_and_analyze_frd_data_md_media/figure_4.png" width="562" alt="figure_4.png"></center>
-
+![figure_4.png](run_FRE_and_analyze_frd_data_md_media/figure_4.png)
 
 ```matlab
 
 best_fit_model = estimated_model{max_fit_index}
 ```
 
-```TextOutput
+```matlabTextOutput
 best_fit_model =
  
   -47.86 s^4 + 2.755e04 s^3 + 1.285e06 s^2 + 3.862e07 s + 1.314e09
@@ -212,10 +211,12 @@ best_fit_model =
       s^5 + 1144 s^4 + 5.224e05 s^3 + 5.956e07 s^2 + 6.1e08 s
  
 同定された連続時間伝達関数です。
+
 パラメーター化:
    極の数: 5   零点の数: 4
    自由係数の数: 10
    パラメーターとその不確かさについては、"tfdata"、"getpvec"、"getcov" を使用してください。
+
 状態:                                          
 周波数応答データ "frd_data_set" に TFEST を使用して推定されました。
 推定データへの適合: 95.56%                            
@@ -228,8 +229,7 @@ bode(frd_data_set, best_fit_model, frd_x, plot_option);
 legend('元のデータ', '同定された伝達関数');
 ```
 
-<center><img src="run_FRE_and_analyze_frd_data_md_media/figure_5.png" width="562" alt="figure_5.png"></center>
-
+![figure_5.png](run_FRE_and_analyze_frd_data_md_media/figure_5.png)
 
 次数が高いほどより良くボード線図が一致していることが分かった。モデルの精度が良い方がMPCの性能は向上するが、次数が高いと計算時間が増加するデメリットもあるため、ここでは低い次数でどこまでの性能が得られるかを確認したい。よって今回は、最も次数の低いモデルを選択する。
 
@@ -241,7 +241,7 @@ estimated_BallAndPlate_transfer_function = tf(better_model_1.Numerator, ...
     [better_model_1.Denominator, 0])
 ```
 
-```TextOutput
+```matlabTextOutput
 estimated_BallAndPlate_transfer_function =
  
   19.64 s^2 - 58.89 s + 1.614e04

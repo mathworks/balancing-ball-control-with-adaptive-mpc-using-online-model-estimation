@@ -1,10 +1,10 @@
 
-# <span style="color:rgb(213,80,0)">オンライン推定モデルを利用した適応MPCの設計</span>
+# オンライン推定モデルを利用した適応MPCの設計
 
 本サンプルモデルでは、オンラインで逐次推定した状態空間モデルを用いて、適応MPCを実行する制御器の設計方法について紹介する。
 
 
-モデルをダウンロード、もしくはクローンした後、最初に「rls_mpc_ball_control.prj」をダブルクリックして[プロジェクト](https://jp.mathworks.com/help/matlab/projects.html)を起動すること。
+モデルをダウンロード、もしくはクローンした後、最初に「rls\_mpc\_ball\_control.prj」をダブルクリックして[プロジェクト](https://jp.mathworks.com/help/matlab/projects.html)を起動すること。
 
 # 必要なツールボックス
 
@@ -60,6 +60,9 @@
 
 
 GitHubからクローンしている場合には、以下の該当バージョンに戻すことで、過去バージョンファイルを得ることができる。
+
+
+R2023b: [v4.0](https://github.com/mathworks/balancing-ball-control-with-adaptive-mpc-using-online-model-estimation/archive/refs/tags/v4.0.zip)
 
 
 R2023a: [v3.0](https://github.com/mathworks/balancing-ball-control-with-adaptive-mpc-using-online-model-estimation/archive/refs/tags/v3.0.zip)

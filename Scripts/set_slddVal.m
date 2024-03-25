@@ -1,24 +1,22 @@
 function set_slddVal(sldd_name, val_name, val)
-%% Copyright 2022 The MathWorks, Inc.
+%% Copyright 2024 The MathWorks, Inc.
 %%
+sldd_obj = Simulink.data.connect(sldd_name);
+data_obj = sldd_obj.get(val_name);
 
-sldd_obj = Simulink.data.dictionary.open(sldd_name);
-data_set_obj = getSection(sldd_obj, 'Design Data');
-data_entry = getEntry(data_set_obj, val_name);
-
-valObj = getValue(data_entry);
-if isa(valObj, 'Simulink.VariantControl')
-    valObj.Value.Value = slexpr(val);
+%%
+if isa(data_obj, 'Simulink.VariantControl')
+    data_obj.Value.Value = eval(val);
 else
     if ischar(val)
-        valObj.Value = slexpr(val);
+        data_obj.Value = slexpr(val);
     else
-        valObj.Value = val;
+        data_obj.Value = val;
     end
 end
 
-setValue(data_entry, valObj);
+sldd_obj.set(val_name, data_obj);
 
-saveChanges(sldd_obj);
+sldd_obj.saveChanges;
 
 end
